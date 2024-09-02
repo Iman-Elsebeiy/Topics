@@ -3,16 +3,28 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
+
 use Illuminate\Http\Request;
+use App\Models\Topic;
+use App\Models\Category;
+use App\Traits\Common;
 
 class TopicController extends Controller
 {
+
+    use Common;
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         //
+      $topics = Topic::with('category')->get();
+
+        return view('admin.topics', compact('topics'));
+
     }
 
     /**
@@ -21,6 +33,8 @@ class TopicController extends Controller
     public function create()
     {
         //
+        $categories = Category::select('id','category_name')->get();
+        return view('admin.topic_create',compact('categories'));
     }
 
     /**
@@ -29,6 +43,25 @@ class TopicController extends Controller
     public function store(Request $request)
     {
         //
+        $data = $request->validate([
+            'title' => 'required|string',
+            'content' => 'required|string',
+            'category_id' => 'required|integer|exists:categories,id',
+
+            'image' => 'required|mimes:png,jpg,jpeg|max:2048',
+
+        ]);
+
+        $data['trending'] = isset($request->published);
+        $data['published'] = isset($request->published);
+        $data['image'] = $this->uploadFile($request->image, 'admin/assets/images/');
+
+
+        Topic::create($data);
+
+        return redirect()->route('topic.index');
+
+
     }
 
     /**
@@ -37,6 +70,13 @@ class TopicController extends Controller
     public function show(string $id)
     {
         //
+  
+
+    
+
+    return view('admin.topic_show');
+
+
     }
 
     /**
@@ -44,7 +84,12 @@ class TopicController extends Controller
      */
     public function edit(string $id)
     {
-        //
+
+    $topic = Topic::findOrFail($id);
+    $categories = Category::select('id', 'category_name')->get();
+    return view('admin.topic_edit', compact('topic', 'categories'));
+
+
     }
 
     /**
@@ -52,14 +97,42 @@ class TopicController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        //  
+
+    $topic = Topic::findOrFail($id);
+
+    $data = $request->validate([
+        'title' => 'required|string',
+        'content' => 'required|string',
+        'category_id' => 'required|integer|exists:categories,id',
+        'image' => 'nullable|mimes:png,jpg,jpeg|max:2048',
+    ]);
+
+    $data['published'] = isset($request->published);
+    $data['trending'] = isset($request->published);
+
+        if ($request->hasFile('image')) {
+            $data['image'] = $this->uploadFile($request->image, 'assets/images/car/');
+        }
+
+    $topic->update($data);
+
+    return redirect()->route('topic.index');
+
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request): RedirectResponse
     {
         //
+
+        $id = $request->id;
+        Topic::where('id', $id)->delete();
+    return redirect()->route('topic.index');
+     
+
     }
 }

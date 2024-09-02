@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('topics', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->text('content');
+            $table->boolean('trending');
+            $table->boolean('published');
+            $table->string('image')->nullable();
+            $table->foreignId('category_id')->constrained('categories');
             $table->timestamps();
         });
     }

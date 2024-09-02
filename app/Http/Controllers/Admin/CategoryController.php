@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Category;
 
 class CategoryController extends Controller
 {
@@ -13,6 +15,9 @@ class CategoryController extends Controller
     public function index()
     {
         //
+        $categories = Category::get();
+        return view('admin.categories', compact('categories'));
+   
     }
 
     /**
@@ -21,6 +26,7 @@ class CategoryController extends Controller
     public function create()
     {
         //
+        return view('admin.category_create');
     }
 
     /**
@@ -29,7 +35,14 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         //
+        $data = $request->validate([
+            'category_name' => 'required|string',
+        ]);
+     Category::create($data);
+        
+     return redirect()->route('category.index');
     }
+    
 
     /**
      * Display the specified resource.
@@ -45,6 +58,10 @@ class CategoryController extends Controller
     public function edit(string $id)
     {
         //
+        $category = Category::findOrFail($id);
+        
+        return view('admin.edit_category', compact ('category'));
+
     }
 
     /**
@@ -52,14 +69,28 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
-    }
+
+
+    $data = $request->validate([
+        'category_name' => 'required|string',
+    ]);
+
+    $category = Category::findOrFail($id);
+    $category->update($data);
+
+    return redirect()->route('category.index');
+}
+    
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request): RedirectResponse
     {
         //
+        
+        $id = $request->id;
+        Category::where('id', $id)->delete();
+        return redirect()->route('category.index');
     }
 }
