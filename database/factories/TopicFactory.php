@@ -1,6 +1,8 @@
 <?php
 
 namespace Database\Factories;
+use App\Models\Category;
+use App\Models\Topic;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -18,6 +20,13 @@ class TopicFactory extends Factory
     {
         return [
             //
+            'title' => fake()->word(),
+            'content' => fake()->text(),
+            'trending' => fake()->boolean(),
+            'published' =>fake()->boolean(),
+            'image' => $this->faker->imageUrl(),
+            'category_id'=>fake()->numberBetween(1,6),
+        
         ];
     }
 }
