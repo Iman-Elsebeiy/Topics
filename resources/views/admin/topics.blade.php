@@ -1,21 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('admin/assets/css/dataTables.dataTables.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('admin/assets/css/main.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('admin/assets/css/styles.css') }}">
-</head>
+@include('admin.includes.head')
+
 
 <body>
 
-  @include('admin.includes.header')
+@include('admin.includes.header')
 
     <div class="container my-5">
         <div class="mx-2">
@@ -39,7 +30,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($topic as $topic)
+                        @foreach($topics as $topic)
                         <tr>
                             <th scope="row">{{ $topic->created_at->format('d M Y') }}</th>
                             <td><a class="text-decoration-none text-dark" href="{{ route('topic.show', $topic->id) }}"> {{ $topic->title }} </a></td>
@@ -69,14 +60,8 @@
             </div>
         </div>
     </div>
-    <script src="{{ asset('admin/assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/dataTables.min.js') }}"></script>
-    <script>
-        $(document).ready(function() {
-            $('#_table').DataTable();
-        });
-    </script>
+    @include('admin.includes.js')
+
 </body>
 
 </html>

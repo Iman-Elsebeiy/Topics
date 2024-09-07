@@ -1,18 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="assests/css/dataTables.dataTables.min.css">
-    <link rel="stylesheet" href="assests/css/main.min.css">
-    <link rel="stylesheet" href="assests/css/styles.css">
-</head>
+@include('admin.includes.head')
+
 
 <body>
  
@@ -22,7 +12,7 @@
         <div class="mx-2">
             <div class="row justify-content-between mb-2 pb-2">
                 <h2 class="fw-bold fs-2 col-auto">Topic Details</h2>
-                <a href="add_topic.html" class="btn btn-link  link-dark fw-semibold col-auto me-3">➕Add new topic</a>
+                <a href="{{route('topic.create')}}" class="btn btn-link  link-dark fw-semibold col-auto me-3">➕Add new topic</a>
             </div>
             <div class="p-5">
                 <div class="container-fluid g-0 pt-3 pb-5 px-lg-5 px-md-3 px-1">
@@ -30,7 +20,7 @@
                       class="img-wrapper"
                     >
                       <img
-                        src="assests/images/topics/colleagues-working-cozy-office-medium-shot.png"
+                        src="{{asset('admin/assets/images/topics/'.$topic->image) }}"
                         class="rounded image-center border-5 rounded-4"
                         alt="DEI-header-img"
                       />
@@ -38,64 +28,12 @@
                     <!-- article -->
                     <div class="mx-auto pt-4" style="max-width: 1225px">
                       <article class="mx-md-4 ">
-                        <h2 class="fs-1 py-4">Topic Title</h2>
+                        <h2 class="fs-1 py-4">{{$topic->title}}</h2>
                         <p>
-                          Molestie interdum cras sit non magna vitae purus cum. Nisi in
-                          malesuada nunc eget id maecenas. Blandit porttitor quam tempus sed
-                          at gravida urna. Egestas montes nibh aliquam luctus. Eu placerat
-                          arcu libero viverra cras. Fermentum ullamcorper velit at
-                          condimentum vulputate. Risus in vel commodo ultrices tellus
-                          convallis. Sit malesuada tempus ultricies fringilla sit nunc
-                          facilisi pretium. Felis aenean massa libero bibendum. Faucibus et
-                          imperdiet enim diam viverra. Et egestas imperdiet tempor dictum
-                          leo eu.<br /><br />
-            
-                          Sit suscipit neque mauris fames. Sit purus nullam in et. Massa
-                          aliquet neque scelerisque sed vestibulum porta velit scelerisque.
-                          Fames egestas congue vivamus nulla sit porta arcu ultrices.
-                          Porttitor phasellus volutpat elit maecenas mauris molestie. Semper
-                          in dui lectus fames ultrices erat. Sed arcu sit scelerisque
-                          consequat amet. Consectetur purus tempus cras neque interdum arcu
-                          magna feugiat vel.<br /><br />
-            
-                          Lacus molestie maecenas duis sit malesuada orci sed. Mauris augue
-                          sodales lacus eget at nunc morbi in tellus. Quis mi venenatis in
-                          tempor ultricies ridiculus. Vestibulum in mauris pellentesque
-                          platea in. Massa sagittis non quam montes sagittis elementum.
-                          Tellus amet morbi orci at aliquam. Consequat elementum scelerisque
-                          amet sollicitudin id. Scelerisque consequat habitant velit
-                          tincidunt nunc nulla habitant tristique at.
-                        </p>
-            
-                        <p>
-                          Molestie interdum cras sit non magna vitae purus cum. Nisi in
-                          malesuada nunc eget id maecenas. Blandit porttitor quam tempus sed
-                          at gravida urna. Egestas montes nibh aliquam luctus. Eu placerat
-                          arcu libero viverra cras. Fermentum ullamcorper velit at
-                          condimentum vulputate. Risus in vel commodo ultrices tellus
-                          convallis. Sit malesuada tempus ultricies fringilla sit nunc
-                          facilisi pretium. Felis aenean massa libero bibendum. Faucibus et
-                          imperdiet enim diam viverra. Et egestas imperdiet tempor dictum
-                          leo eu.<br /><br />
-            
-                          Sit suscipit neque mauris fames. Sit purus nullam in et. Massa
-                          aliquet neque scelerisque sed vestibulum porta velit scelerisque.
-                          Fames egestas congue vivamus nulla sit porta arcu ultrices.
-                          Porttitor phasellus volutpat elit maecenas mauris molestie. Semper
-                          in dui lectus fames ultrices erat. Sed arcu sit scelerisque
-                          consequat amet. Consectetur purus tempus cras neque interdum arcu
-                          magna feugiat vel.<br /><br />
-            
-                          Lacus molestie maecenas duis sit malesuada orci sed. Mauris augue
-                          sodales lacus eget at nunc morbi in tellus. Quis mi venenatis in
-                          tempor ultricies ridiculus. Vestibulum in mauris pellentesque
-                          platea in. Massa sagittis non quam montes sagittis elementum.
-                          Tellus amet morbi orci at aliquam. Consequat elementum scelerisque
-                          amet sollicitudin id. Scelerisque consequat habitant velit
-                          tincidunt nunc nulla habitant tristique at.<br /><br />
+                        {{$topic->content}}
                         </p>
                         <div class="text-md-end">
-                            <a class="btn mt-4 btn-secondary text-white fs-5 fw-bold border-0 py-2 px-md-5" href="topics.html">
+                            <a href="{{route('topic.index')}}" class="btn mt-4 btn-secondary text-white fs-5 fw-bold border-0 py-2 px-md-5" href="topics.html">
                               Back to All topics
                             </a>
                           </div>
@@ -104,10 +42,8 @@
               </div>
         </div>
     </div>
-    <script src="assests/js/jquery.min.js"></script>
-    <script src="assests/js/bootstrap.bundle.min.js"></script>
-    <script src="assests/js/dataTables.min.js"></script>
-    <script src="assests/js/tables.js"></script>
+    @include('admin.includes.js')
+
 </body>
 
 </html>

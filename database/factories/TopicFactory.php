@@ -16,6 +16,17 @@ class TopicFactory extends Factory
      *
      * @return array<string, mixed>
      */
+     
+     private function generateRandomImage($path)
+
+    {
+        $files = scandir($path);
+        $files = array_diff($files,array('',''));
+
+        return fake()->randomElement($files);
+    }
+
+
     public function definition(): array
     {
         return [
@@ -24,8 +35,8 @@ class TopicFactory extends Factory
             'content' => fake()->text(),
             'trending' => fake()->boolean(),
             'published' =>fake()->boolean(),
-            'image' => $this->faker->imageUrl(),
-            'category_id'=>fake()->numberBetween(1,6),
+            'image'=>$this->generateRandomImage(public_path('admin/assets/images/topics/')),
+            'category_id'=>fake()->numberBetween(7,16),
         
         ];
     }

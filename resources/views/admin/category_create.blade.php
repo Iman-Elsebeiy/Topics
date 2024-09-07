@@ -1,18 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="{{ asset('admin/assets/css/dataTables.dataTables.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('admin/assets/css/main.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('admin/assets/css/styles.css') }}">
-</head>
+@include('admin.includes.head')
+
 
 <body>
   
@@ -40,10 +30,8 @@
     </div>
   </div>
   
-  <script src="{{ asset('admin/assets/js/jquery.min.js') }}"></script>
-  <script src="{{ asset('admin/assets/js/bootstrap.bundle.min.js') }}"></script>
-  <script src="{{ asset('admin/assets/js/dataTables.min.js') }}"></script>
-  <script src="{{ asset('admin/assets/js/tables.js') }}"></script>
+  @include('admin.includes.js')
+
 </body>
 
 </html>

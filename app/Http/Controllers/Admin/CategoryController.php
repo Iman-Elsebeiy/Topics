@@ -75,10 +75,8 @@ class CategoryController extends Controller
         'category_name' => 'required|string',
     ]);
 
-    $category = Category::findOrFail($id);
-    $category->update($data);
-
-    return redirect()->route('category.index');
+    Category::where('id', $id)->update($data);
+       return redirect()->route('category.index');
 }
     
 

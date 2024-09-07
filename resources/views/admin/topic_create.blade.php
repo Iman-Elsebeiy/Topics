@@ -1,21 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ asset('admin/asstes/css/dataTables.dataTables.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('admin/assets/css/main.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('admin/assets/css/styles.css') }}">
-</head>
+@include('admin.includes.head');
+
 
 <body>
 @include('admin.includes.header');
-
 
   <div class="container my-5">
     <div class="mx-2">
@@ -34,16 +24,16 @@
         <div class="form-group mb-3 row">
           <label for="category_id" class="form-label col-md-2 fw-bold text-md-end">Category:</label>
           <div class="col-md-10">
-            <select name="category_id" id="category_id" class="form-control py-1">
-             @error('category_id')
-             <div class="alert alert-danger">{{ $message }}</div>
-              @enderror
+            <select name="category_id" value="{{ old('category_id') }}" id="category_id" class="form-control py-1">
               <option value="">Select Category</option>
                @foreach ($categories as $category)
-              <option value="{{ $category->id }}"@selected(old('category_id') == $category->id)>
+              <option value="{{ $category->id }}" @selected(old('category_id') == $category->id)>
               {{ $category->category_name }}</option>
                @endforeach
             </select>
+            @error('category_id')
+             <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
           </div>
         </div>
         <div class="form-group mb-3 row">
@@ -64,7 +54,7 @@
           <div class="form-group mb-3 row">
             <label for="" class="form-label col-md-2 fw-bold text-md-end">Published:</label>
             <div class="col-md-10">
-              <input type="checkbox" class="form-check-input" style="padding: 0.7rem;" />
+              <input type="checkbox" name="published" class="form-check-input" style="padding: 0.7rem;" />
             </div>
           </div>
           <hr>
@@ -86,12 +76,9 @@
       </div>
     </div>
     </main>
-    <script src="{{ asset('admin-assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('admin-assets/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('admin-assets/js/dataTables.min.js') }}"></script>
-    <script src="{{ asset('admin-assets/js/tables.js') }}"></script>
+    @include('admin.includes.js')
 
-  </body>
 
-  </html>
-          
+</body>
+
+</html>
