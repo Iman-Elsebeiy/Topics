@@ -20,8 +20,8 @@
                 <div class="dropdown-menu dropdown-center navbar-dropdown" aria-labelledby="UserDropdown">
                   <div class="dropdown-header text-center">
                     <img class="img-md rounded-circle" src="{{ asset('admin/assets/images/avatar-default.svg') }}" alt="Profile image" width="80" height="80" />
-                    <p class="mb-1 mt-3 font-weight-semibold">Allen Moreno</p>
-                    <p class="fw-light text-muted mb-0">allenmoreno@gmail.com</p>
+                    <p class="mb-1 mt-3 font-weight-semibold">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</p>
+                    <p class="fw-light text-muted mb-0">{{ Auth::user()->email }}</p>
                   </div>
                   <a class="dropdown-item">My Profile</a>
                   <a class="dropdown-item">Sign Out</a>
@@ -50,11 +50,11 @@
                 USERS
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="add_user.html">Add user</a></li>
+                <li><a class="dropdown-item" href="{{route('user.create')}}">Add user</a></li>
                 <li>
                   <hr class="dropdown-divider" />
                 </li>
-                <li><a class="dropdown-item" href="users.html">All users</a></li>
+                <li><a class="dropdown-item" href="{{route('user.index')}}">All users</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">

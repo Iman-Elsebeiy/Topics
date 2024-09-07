@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Admin\TopicController;
 use App\Http\Controllers\Admin\TestimonialController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\PublicController;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Support\Facades\Route;
@@ -52,7 +53,13 @@ Route::prefix('admin')->group(function () {
     Route::delete('testimonial/delete', [TestimonialController::class, 'destroy'])->name('testimonial.destroy');
     Route::put('testimonial/{id}', [TestimonialController::class, 'update'])->name('testimonial.update');
     Route::get('testimonial/{id}/show', [TestimonialController::class, 'show'])->name('testimonial.show');
-});
+        
+    Route::get('user', [UserController::class, 'index'])->name('user.index');
+    Route::get('user/add', [UserController::class, 'create'])->name('user.create');
+    Route::post('user', [UserController::class, 'store'])->name('user.store');
+    Route::get('user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
+    Route::put('user/{id}', [UserController::class, 'update'])->name('user.update');
+}); 
 Auth::routes(['Verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -62,7 +69,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //contactus
 
 Route::get('message', [ContactController::class, 'index'])->name('message.index'); //show page 
-Route::get('/contacts/create', [ContactController::class, 'create'])->name('message.create');
 Route::post('message/store', [ContactController::class, 'store'])->name('message.store'); //store in db 
 Route::get('messagel/{id}/show', [ContactController::class, 'show'])->name('message.show'); //store in db 
 Route::delete('message/delete', [ContactController::class, 'destroy'])->name('message.destroy'); //store in db 

@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactMail;
 use Illuminate\Http\Request;
 use App\Models\Contact;
+use Illuminate\Mail\Mailables\Address;
+use Illuminate\Mail\Mailables\Content;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -21,9 +25,9 @@ class ContactController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        return view('contact');
+    public function sendEmail(Request $request)
+    { 
+      
     }
 
     /**
@@ -31,20 +35,24 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
+        // Validate the request
         $data = $request->validate([
             'name' => 'required|string',
             'email' => 'required|email',
             'subject' => 'required|string',
             'read' => 'boolean',
             'message' => 'required|string',
-
         ]);
-          
-          Contact::create($data);
-        
-          return redirect()->back()->with('success', 'Message sent successfully!');
-    
+
+        // Store the message in the database
+        Contact::create($data);
+
+        // Send email notification
+        Mail::to('admin@example.com')->send(new ContactMail($data));
+
+        return redirect()->back()->with('success', 'Message sent and stored successfully!');
     }
+
 
     /**
      * Display the specified resource.

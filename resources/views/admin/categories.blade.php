@@ -5,7 +5,7 @@
 
 
 <body>
-@include('admin.includes.header');
+@include('admin.includes.header')
 
     <div class="container my-5">
         <div class="mx-2">
