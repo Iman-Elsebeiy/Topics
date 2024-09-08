@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Contact Message</title>
+    <title> Message</title>
 </head>
 <body>
     <h1>New Contact Message</h1>

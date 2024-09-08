@@ -15,9 +15,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::whereNotNull('email_verified_at')->get();
         return view('admin.users', compact('users'));
     }
+    
 
     /**
      * Show the form for creating a new resource.

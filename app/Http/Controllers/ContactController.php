@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Mail\ContactMail;
 use Illuminate\Http\Request;
 use App\Models\Contact;
-use Illuminate\Mail\Mailables\Address;
-use Illuminate\Mail\Mailables\Content;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Mail;
+
 
 class ContactController extends Controller
 {
@@ -40,13 +40,15 @@ class ContactController extends Controller
             'name' => 'required|string',
             'email' => 'required|email',
             'subject' => 'required|string',
-            'read' => 'boolean',
             'message' => 'required|string',
         ]);
 
         // Store the message in the database
-        Contact::create($data);
+        $data['read'] = false;
 
+        // dd($data);
+        Contact::create($data);
+    
         // Send email notification
         Mail::to('admin@example.com')->send(new ContactMail($data));
 
@@ -62,7 +64,6 @@ class ContactController extends Controller
         
         $contact = Contact::findOrFail($id);
 
-        // Mark the contact as read if it is not already read
         if (!$contact->read) {
             $contact->update(['read' => true]);
         }
