@@ -20,7 +20,7 @@
                       class="img-wrapper"
                     >
                       <img
-                        src="{{asset('admin/assets/images/topics/'.$topic->image) }}"
+                        src="{{asset('assets/images/topics/'.$topic->image) }}"
                         class="rounded image-center border-5 rounded-4"
                         alt="DEI-header-img"
                       />

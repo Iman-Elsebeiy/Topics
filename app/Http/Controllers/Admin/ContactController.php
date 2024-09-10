@@ -1,18 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-
-use App\Mail\ContactMail;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Mail\ContactMail;
 use App\Models\Contact;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Mail;
 
-
 class ContactController extends Controller
 {
-    /**
+       /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
@@ -25,9 +24,9 @@ class ContactController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function sendEmail(Request $request)
+    public function create(Request $request)
     { 
-      
+      return view('public.contact');
     }
 
     /**

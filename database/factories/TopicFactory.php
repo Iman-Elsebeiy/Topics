@@ -36,7 +36,7 @@ class TopicFactory extends Factory
             'trending' => fake()->boolean(),
             'published' =>fake()->boolean(),
             'image'=>$this->generateRandomImage(public_path('admin/assets/images/topics/')),
-            'category_id'=>fake()->numberBetween(7,16),
+            'category_id'=>fake()->numberBetween(1,5),
         
         ];
     }

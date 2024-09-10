@@ -46,14 +46,13 @@ class TopicController extends Controller
             'title' => 'required|string',
             'content' => 'required|string',
             'category_id' => 'required|integer|exists:categories,id',
-
             'image' => 'required|mimes:png,jpg,jpeg|max:2048',
 
         ]);
 
         $data['trending'] = isset($request->published);
         $data['published'] = isset($request->published);
-        $data['image'] = $this->uploadFile($request->image, 'admin/assets/images/topics/');
+        $data['image'] = $this->uploadFile($request->image, 'assets/images/topics/');
 
         Topic::create($data);
 
@@ -103,10 +102,10 @@ class TopicController extends Controller
         ]);
 
         $data['published'] = isset($request->published);
-        $data['trending'] = isset($request->published);
+        $data['trending'] = isset($request->trending);
 
         if ($request->hasFile('image')) {
-            $data['image'] = $this->uploadFile($request->image, 'admin/assets/images/topics/');
+            $data['image'] = $this->uploadFile($request->image, 'assets/images/topics/');
         }
 
         $topic->update($data);

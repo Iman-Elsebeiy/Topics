@@ -43,7 +43,7 @@
         <div class="form-group mb-3 row">
           <label for="" class="form-label col-md-2 fw-bold text-md-end">Trending:</label>
           <div class="col-md-10">
-            <input type="checkbox" name="trending" @checked(old('trending', $topic->trending)) value="1" class="form-check-input" style="padding: 0.7rem;" checked />
+            <input type="checkbox" name="trending" @checked(old('trending', $topic->trending)) value="1" class="form-check-input" style="padding: 0.7rem;" />
           </div>
         </div>
         <div class="form-group mb-3 row">
@@ -57,7 +57,7 @@
           <label for="" class="form-label col-md-2 fw-bold text-md-end">Image:</label>
           <div class="col-md-10">
             <input type="file" name="image" value="{{old('image', $topic->image)}}" class="form-control" style="padding: 0.7rem; margin-bottom: 10px;" />
-            <img src="{{ asset('admin/assets/images/topics/'.$topic->image)}}" alt="{{$topic->image}}" style="width: 10rem;">
+            <img src="{{ asset('assets/images/topics/'.$topic->image)}}" alt="{{$topic->image}}" style="width: 10rem;">
           </div>
         </div>
         <div class="text-md-end">

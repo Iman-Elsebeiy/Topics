@@ -29,7 +29,7 @@
                             <th scope="row">{{ $category->created_at->format('d M Y') }}</th>
                             <td>{{ $category->category_name }}</td>
                             <td class="text-center"><a class="text-decoration-none text-dark" href="{{route('category.edit', $category->id)}}"><img src="{{ asset('admin/assets/images/edit-svgrepo-com.svg') }}"></a></td>
-                            <td><form action="{{route('category.destroy') }}" method="post" 
+                            <td><form action="{{route('category.destroy',$category->id ) }}" method="POST" 
                             onsubmit="return confirm('Are you sure you want to delete this category?')">
                             @csrf
                             @method('delete')

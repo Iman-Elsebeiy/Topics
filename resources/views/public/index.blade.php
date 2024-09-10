@@ -40,78 +40,64 @@
         </section>
 
 
-        <section class="featured-section">
-            <div class="container">
-                <div class="row justify-content-center">
-
-                    <div class="col-lg-4 col-12 mb-4 mb-lg-0">
-                        <div class="custom-block bg-white shadow-lg">
-                            <a href="topics-detail.html">
-                                <div class="d-flex">
-                                    <div>
-                                        <h5 class="mb-2">Web Design</h5>
-
-                                        <p class="mb-0">When you search for free CSS templates, you will notice that
-                                            TemplateMo is one of the best websites.</p>
-                                    </div>
-
-                                    <span class="badge bg-design rounded-pill ms-auto">14</span>
+ <section class="featured-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <!-- First Topic  -->
+            @if ($topics->count() > 0)
+                <div class="col-lg-4 col-12 mb-4 mb-lg-0">
+                    <div class="custom-block bg-white shadow-lg">
+                        <a href="">
+                            <div class="d-flex">
+                                <div>
+                                    <h5 class="mb-2">{{ $topics[0]->title }}</h5>
+                                    <p class="mb-0">{{ Str::limit($topics[0]->content, 100) }}</p>
                                 </div>
-
-                                <img src="{{ asset('assets/images/topics/undraw_Remote_design_team_re_urdx.png') }}"
-                                    class="custom-block-image img-fluid" alt="">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6 col-12">
-                        <div class="custom-block custom-block-overlay">
-                            <div class="d-flex flex-column h-100">
-                                <img src="{{asset('assets/images/businesswoman-using-tablet-analysis.jpg') }}"
-                                    class="custom-block-image img-fluid" alt="">
-
-                                <div class="custom-block-overlay-text d-flex">
-                                    <div>
-                                        <h5 class="text-white mb-2">Finance</h5>
-
-                                        <p class="text-white">Topic Listing Template includes homepage, listing page,
-                                            detail page, and contact page. You can feel free to edit and adapt for your
-                                            CMS requirements.</p>
-
-                                        <a href="topics-detail.html" class="btn custom-btn mt-2 mt-lg-3">Learn More</a>
-                                    </div>
-
-                                    <span class="badge bg-finance rounded-pill ms-auto">25</span>
-                                </div>
-
-                                <div class="social-share d-flex">
-                                    <p class="text-white me-4">Share:</p>
-
-                                    <ul class="social-icon">
-                                        <li class="social-icon-item">
-                                            <a href="#" class="social-icon-link bi-twitter"></a>
-                                        </li>
-
-                                        <li class="social-icon-item">
-                                            <a href="#" class="social-icon-link bi-facebook"></a>
-                                        </li>
-
-                                        <li class="social-icon-item">
-                                            <a href="#" class="social-icon-link bi-pinterest"></a>
-                                        </li>
-                                    </ul>
-
-                                    <a href="#" class="custom-icon bi-bookmark ms-auto"></a>
-                                </div>
-
-                                <div class="section-overlay"></div>
+                                <span class="badge bg-design rounded-pill ms-auto">{{ $topics[0]->views }}</span>
                             </div>
+                            <img src="{{ asset('assets/images/topics/'.$topics[0]->image)}}"
+                                class="custom-block-image img-fluid" alt="{{ $topics[0]->title }}">
+                        </a>
+                    </div>
+                </div>
+            @endif
+
+            <!-- Second Topic  -->
+            @if ($topics->count() > 1)
+                <div class="col-lg-6 col-12">
+                    <div class="custom-block custom-block-overlay">
+                        <div class="d-flex flex-column h-100">
+                            <img src="{{ asset('assets/images/topics/'.$topics[1]->image) }}"
+                                class="custom-block-image img-fluid" alt="{{ $topics[1]->title }}">
+
+                            <div class="custom-block-overlay-text d-flex">
+                                <div>
+                                    <h5 class="text-white mb-2">{{ $topics[1]->title }}</h5>
+                                    <p class="text-white">{{ Str::limit($topics[1]->content, 100) }}</p>
+                                    <a href="{{ route('topic.details', $topics[1]->id) }}" class="btn custom-btn mt-2 mt-lg-3">Learn More</a>
+                                </div>
+                                <span class="badge bg-finance rounded-pill ms-auto">{{ $topics[1]->views }}</span>
+                            </div>
+
+                            <div class="social-share d-flex">
+                                <p class="text-white me-4">Share:</p>
+                                <ul class="social-icon">
+                                    <li class="social-icon-item"><a href="#" class="social-icon-link bi-twitter"></a></li>
+                                    <li class="social-icon-item"><a href="#" class="social-icon-link bi-facebook"></a></li>
+                                    <li class="social-icon-item"><a href="#" class="social-icon-link bi-pinterest"></a></li>
+                                </ul>
+                                <a href="#" class="custom-icon bi-bookmark ms-auto"></a>
+                            </div>
+
+                            <div class="section-overlay"></div>
                         </div>
                     </div>
-
                 </div>
-            </div>
-        </section>
+            @endif
+        </div>
+    </div>
+</section>
+
 
 
         <section class="explore-section section-padding" id="section_2">
@@ -614,78 +600,8 @@
             </div>
         </section>
        
-        <section class="section-padding" id="section_5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-5">
-                        <h2 class="mb-4">What Our clients Says?</h2>
-                    </div>
-                </div>
-                <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="row mx-md-5">
-                                <div class="col-md-4 testimonials">
-                                    <img class="d-block rounded-3"
-                                        src="{{asset('assets/images/testimonials/janis-dzenis-jkvE9uJN3jk-unsplash.jpg') }}"
-                                        alt="First slide">
-                                </div>
-                                <div class="col-md-8 px-md-5 d-flex flex-column justify-content-center">
-                                    <h3>Jone Due<br><strong class="date">12/02/2019</strong></h3>
-                                    <p class="text-muted">You guys rock! Thank you for making it painless, pleasant and most of all hassle
-                                        free! I wish I would have thought of it first. 
-                                        <br>
-                                        You guys rock! Thank you for making it painless, pleasant and most of all hassle
-                                        free! I wish I would have thought of it first.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="row mx-md-5">
-                                <div class="col-md-4 testimonials">
-                                    <img class="d-block rounded-3"
-                                        src="{{asset('assets/images/testimonials/janis-dzenis-oPRubjbiqKI-unsplash.jpg') }}"
-                                        alt="First slide">
-                                </div>
-                                <div class="col-md-8 px-md-5 d-flex flex-column justify-content-center">
-                                    <h3>Jone Due<br><strong class="date">12/02/2019</strong></h3>
-                                    <p class="text-muted">You guys rock! Thank you for making it painless, pleasant and most of all hassle
-                                        free! I wish I would have thought of it first. 
-                                        <br>
-                                        You guys rock! Thank you for making it painless, pleasant and most of all hassle
-                                        free! I wish I would have thought of it first.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="row mx-md-5">
-                                <div class="col-md-4 testimonials">
-                                    <img class="d-block rounded-3"
-                                        src="{{asset('assets/images/testimonials/rocky-xiong-UE04nFCgDUE-unsplash.jpg') }}"
-                                        alt="First slide">
-                                </div>
-                                <div class="col-md-8 px-md-5 d-flex flex-column justify-content-center">
-                                    <h3>Jone Due<br><strong class="date">12/02/2019</strong></h3>
-                                    <p class="text-muted">You guys rock! Thank you for making it painless, pleasant and most of all hassle
-                                        free! I wish I would have thought of it first. 
-                                        <br>
-                                        You guys rock! Thank you for making it painless, pleasant and most of all hassle
-                                        free! I wish I would have thought of it first.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                      </button>
-                      <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                      </button>
-                </div>
-            </div>
-        </section>
+        @include('includes.testimonials')
+
 
         <section class="contact-section section-padding section-bg" id="section_6">
             <div class="container">

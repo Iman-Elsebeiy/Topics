@@ -50,7 +50,7 @@ class TestimonialController extends Controller
         ]);
 
         $data['published'] = isset($request->published);
-        $data['image'] = $this->uploadFile($request->image, 'admin/assets/images/testimonials/');
+        $data['image'] = $this->uploadFile($request->image, 'assets/images/testimonials/');
 
         Testimonial::create($data);
 
@@ -95,7 +95,7 @@ class TestimonialController extends Controller
 
         $data['published'] = isset($request->published);
         if ($request->hasFile('image')) {
-            $data['image'] = $this->uploadFile($request->image, 'admin/assets/images/testimonials/');
+            $data['image'] = $this->uploadFile($request->image, 'assets/images/testimonials/');
         }
 
         Testimonial::where('id', $id)->update($data);

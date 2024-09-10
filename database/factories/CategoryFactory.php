@@ -18,7 +18,7 @@ class CategoryFactory extends Factory
     {
         return [
             //
-            'category_name'=>fake()->unique()->randomElement(['Education','Marketing','Design','software','project managment','Finance']),
+            'category_name'=>fake()->unique()->randomElement(['Education','Music','Design','project managment','Finance']),
         ];
     }
 }

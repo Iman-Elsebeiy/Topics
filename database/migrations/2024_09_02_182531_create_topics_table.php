@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('content');
-            $table->boolean('trending');
-            $table->boolean('published');
+            $table->boolean('trending')->default(0);
+            $table->boolean('published')->default(0);
+            $table->integer('views')->default(0);
             $table->string('image')->nullable();
             $table->foreignId('category_id')->constrained('categories');
             $table->timestamps();
@@ -29,5 +30,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('topics');
+        
     }
 };

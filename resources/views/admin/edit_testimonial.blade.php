@@ -43,7 +43,7 @@
           <label for="" class="form-label col-md-2 fw-bold text-md-end">Image:</label>
           <div class="col-md-10">
             <input type="file" name="image" value="{{old('image', $testimonial->image)}}" class="form-control" style="padding: 0.7rem; margin-bottom: 10px;" />
-            <img src="{{ asset('admin/assets/images/testimonials/'.$testimonial->image)}}" alt="{{$testimonial->name}}" style="width: 10rem;">
+            <img src="{{ asset('assets/images/testimonials/'.$testimonial->image)}}" alt="{{$testimonial->name}}" style="width: 10rem;">
           </div>
         </div>
         <div class="text-md-end">

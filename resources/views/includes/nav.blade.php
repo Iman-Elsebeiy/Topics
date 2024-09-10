@@ -20,7 +20,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="topics-listing.html">Topics Listing</a>
+                                <a class="nav-link" href="{{route('topic.list')}}">Topics Listing</a>
                             </li>
     
                             <li class="nav-item">

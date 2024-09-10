@@ -28,7 +28,7 @@
                     <tbody>
                     @foreach($users as $user)
                         <tr>
-                            <th scope="row">{{ $user->email_verified_at->format('d M Y') }}</th>
+                            <th scope="row">{{ $user->created_at->format('d M Y') }}</th>
                             <td>{{$user->first_name}} {{$user->last_name}}</td>
                             <td>{{$user->user_name}}</td>
                             <td>{{$user->email}}</td>

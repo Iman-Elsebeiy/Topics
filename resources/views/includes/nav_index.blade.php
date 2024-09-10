@@ -48,7 +48,7 @@
                             <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
                                 <li><a class="dropdown-item" href="{{route('contact')}}">Contact Us</a></li>
                                 <li><a class="dropdown-item" href="{{route('testimonial')}}">Our Client Says</a></li>
-                                <li><a class="dropdown-item" href="topics-listing.html">Topics Listing</a></li>
+                                <li><a class="dropdown-item" href="{{route('topic.list')}}">Topics Listing</a></li>
                                 <li><a class="dropdown-item" href="topics-detail.html">Topics details</a></li>
                                 <li><a class="dropdown-item" href="404.html">404 page</a></li>
                             </ul>
@@ -56,7 +56,7 @@
                     </ul>
 
                     <div class="d-none d-lg-block">
-                        <a href="../admin/register.html" class="navbar-icon bi-person smoothscroll"></a>
+                        <a href="{{route('register')}}" class="navbar-icon bi-person smoothscroll"></a>
                     </div>
                 </div>
             </div>

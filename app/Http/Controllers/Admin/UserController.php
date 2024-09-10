@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::whereNotNull('email_verified_at')->get();
+        $users = User::get();
         return view('admin.users', compact('users'));
     }
     
@@ -40,7 +40,7 @@ class UserController extends Controller
             'last_name' => 'required|string',
             'email' => 'required|email|unique:users,email',
             'user_name' => 'required|string|unique:users,user_name',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:8|confirmed',
 
         
         ]);
@@ -92,7 +92,7 @@ class UserController extends Controller
             'last_name' => 'required|string',
             'email' => ['required', 'email', Rule::unique('users')->ignore($user->id)],
             'user_name' => ['required', 'string', Rule::unique('users')->ignore($user->id)],
-            'password' => 'nullable|string|min:6|confirmed', 
+            'password' => 'nullable|string|min:8|confirmed', 
         ]);
 
         // Only hash and update password if provided
