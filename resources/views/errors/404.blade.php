@@ -21,7 +21,7 @@
                         <h6 class="text-center">404| page not found</h6>
                     </div>
                     <div class="col-12 text-center">
-                        <a href="#" class="text-center fs-6 link mt-5">Back to Home Page ✈</a>
+                        <a href="{{route('index')}}" class="text-center fs-6 link mt-5">Back to Home Page ✈</a>
                     </div>
                 </div>
             </div>

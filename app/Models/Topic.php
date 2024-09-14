@@ -15,6 +15,7 @@ class Topic extends Model
         'trending',
         'published',
         'image',
+        'views',
         'category_id',
         
     ];

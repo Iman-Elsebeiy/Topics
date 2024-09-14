@@ -49,8 +49,6 @@
                                 <li><a class="dropdown-item" href="{{route('contact')}}">Contact Us</a></li>
                                 <li><a class="dropdown-item" href="{{route('testimonial')}}">Our Client Says</a></li>
                                 <li><a class="dropdown-item" href="{{route('topic.list')}}">Topics Listing</a></li>
-                                <li><a class="dropdown-item" href="topics-detail.html">Topics details</a></li>
-                                <li><a class="dropdown-item" href="404.html">404 page</a></li>
                             </ul>
                         </li>
                     </ul>

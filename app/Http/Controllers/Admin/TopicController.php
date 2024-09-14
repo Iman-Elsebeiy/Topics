@@ -50,6 +50,7 @@ class TopicController extends Controller
 
         ]);
 
+        $data['views'] = isset($request->views);
         $data['trending'] = isset($request->published);
         $data['published'] = isset($request->published);
         $data['image'] = $this->uploadFile($request->image, 'assets/images/topics/');

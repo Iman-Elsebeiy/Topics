@@ -31,8 +31,10 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
     Route::resource('topic', TopicController::class);
     Route::resource('testimonial', TestimonialController::class);
     Route::resource('user', UserController::class);
-    Route::resource('message', ContactController::class);
 });
+
+Route::resource('message', ContactController::class);
+
 
 // authentication routes with email verification
 Auth::routes(['verify' => true]);
