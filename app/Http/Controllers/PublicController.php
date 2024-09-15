@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactMail;
 
 use Illuminate\Http\Request;
 use App\Models\Topic;
@@ -80,5 +82,26 @@ class PublicController extends Controller
         return view('public.testimonials',compact('testimonials'));
     }
 
+    public function send(Request $request)
+    {
+        // Validate the request
+        $data = $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'subject' => 'required|string',
+            'message' => 'required|string',
+        ]);
+
+        // Store the message in the database
+        $data['read'] = false;
+
+        // dd($data);
+        Contact::create($data);
     
+        // Send email notification
+        Mail::to('admin@example.com')->send(new ContactMail($data));
+
+        return redirect()->back()->with('success', 'Message sent and stored successfully!');
+    }
+
 }

@@ -19,6 +19,7 @@ Route::get('/', function () {
 Route::controller(PublicController::class)->group(function () {
     Route::get('index', 'index')->name('index');
     Route::get('contact', 'contact')->name('contact');
+    Route::post('contactus', 'send')->name('message.sent');
     Route::get('category', 'category')->name('category');
     Route::get('testimonials', 'testimonial')->name('testimonial');
     Route::get('topics-list', 'topic_list')->name('topic.list');
@@ -31,9 +32,10 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
     Route::resource('topic', TopicController::class);
     Route::resource('testimonial', TestimonialController::class);
     Route::resource('user', UserController::class);
+    Route::resource('message', ContactController::class);
+
 });
 
-Route::resource('message', ContactController::class);
 
 
 // authentication routes with email verification

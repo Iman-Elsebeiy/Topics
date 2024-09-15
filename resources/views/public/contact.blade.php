@@ -40,7 +40,7 @@
                         </div>
 
                         <div class="col-lg-6 col-12">
-                            <form action="{{route('message.store')}}" method="POST" class="custom-form contact-form" role="form">
+                            <form action="{{route('message.sent')}}" method="POST" class="custom-form contact-form" role="form">
                                 @csrf
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-12">

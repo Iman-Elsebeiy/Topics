@@ -101,7 +101,7 @@ class TopicController extends Controller
             'category_id' => 'required|integer|exists:categories,id',
             'image' => 'nullable|mimes:png,jpg,jpeg|max:2048',
         ]);
-
+        $data['views'] = isset($request->views);
         $data['published'] = isset($request->published);
         $data['trending'] = isset($request->trending);
 
