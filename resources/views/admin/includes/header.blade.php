@@ -24,7 +24,7 @@
                     <p class="fw-light text-muted mb-0">{{ Auth::user()?->email }}</p>
                   </div>
                   <a class="dropdown-item">My Profile</a>
-                  <a class="dropdown-item">Sign Out</a>
+                  <a class="dropdown-item" href="{{route('home')}}">Sign Out</a>
                   <p class="footer" style="padding-top: 15px; font-size: 9px; text-align: center">
                     Privacy Policy . Terms . Cookies
                   </p>
