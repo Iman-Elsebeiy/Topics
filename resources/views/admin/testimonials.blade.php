@@ -32,14 +32,16 @@
                             <td>{{$testimonial->name}}</td>
                             <td>{{ Str::limit($testimonial->content, 20, '...') }}</td>
                             <td>{{ $testimonial->published ? 'Yes' : 'No' }}</td>
-                            <td class="text-center"><a class="text-decoration-none text-dark" href="{{route('testimonial.edit', $testimonial->id)}}"><img src="{{ asset('admin/assets/images/edit-svgrepo-com.svg')}}"></a></td>
+                            <td class="text-center"><a class="text-decoration-none text-dark" href="{{route('testimonial.edit', $testimonial->id)}}"><img src="{{ asset('assets/images/edit-svgrepo-com.svg')}}"></a></td>
                             <td class="text-center">
                                 <form action="{{ route('testimonial.destroy', $testimonial->id) }}" method="POST" 
                                     onsubmit="return confirm('Are you sure you want to delete this?')">
                                     @csrf
                                     @method('DELETE')
                                     <input type="hidden" name="id" value="{{$testimonial->id}}">
-                                    <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+                                    <button type="submit" class="btn btn-link text-decoration-none text-dark p-0">
+                                        <img src="{{ asset('admin/assets/images/trash-can-svgrepo-com.svg') }}" alt="Delete">
+                                    </button>                                
                                 </form>
                             </td>   
                          @endforeach

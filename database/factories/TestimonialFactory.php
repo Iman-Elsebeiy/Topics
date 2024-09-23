@@ -21,7 +21,7 @@ class TestimonialFactory extends Factory
 
     {
         $files = scandir($path);
-        $files = array_diff($files,array('',''));
+        $files = array_diff($files,array('.','..'));
 
         return fake()->randomElement($files);
     }  
@@ -32,7 +32,7 @@ class TestimonialFactory extends Factory
         return [
             //
             'name'=>fake()->name(),
-            'image'=>basename(fake()->image(public_path('admin/assets/images/testimonials'))),
+            'image'=>$this->generateRandomImage(public_path('assets/images/testimonials/')),
             'content'=>fake()->text(),
             'published'=>fake()->boolean(),
         ];

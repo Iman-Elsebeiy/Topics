@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('topics', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('content');
+            $table->string('title')->nullable(false);
+            $table->text('content')->nullable(false);
             $table->boolean('trending')->default(0);
             $table->boolean('published')->default(0);
             $table->integer('views')->default(0);
-            $table->string('image')->nullable();
-            $table->foreignId('category_id')->constrained('categories');
+            $table->string('image')->nullable(false);
+            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');  // Foreign key constraint
             $table->timestamps();
         });
     }

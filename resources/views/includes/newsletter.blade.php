@@ -3,7 +3,7 @@
                     <div class="row justify-content-center">
 
                         <div class="col-lg-5 col-12">
-                            <img src="{{asset('assets/images/rear-view-young-college-student.jpg')}}" class="newsletter-image img-fluid" alt="">
+                            <img src="{{ asset('assets/images/rear-view-young-college-student.jpg') }}" class="newsletter-image img-fluid" alt="">
                         </div>
 
                         <div class="col-lg-5 col-12 subscribe-form-wrap d-flex justify-content-center align-items-center">
@@ -21,3 +21,4 @@
                     </div>
                 </div>
             </section>
+        </main>

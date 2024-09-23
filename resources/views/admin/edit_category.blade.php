@@ -18,7 +18,7 @@
           <label for="" class="form-label col-md-2 fw-bold text-md-end">Category Name:</label>
           <div class="col-md-10">
             <input type="text" name="category_name" value="{{old('category_name', $category->category_name)}}" placeholder="e.g. Computer Science" class="form-control py-2" />
-             @error('image')
+             @error('category_name')
               <div class="alert alert-warning">{{ $message }}</div>
              @enderror
           </div>

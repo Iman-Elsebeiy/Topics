@@ -45,14 +45,16 @@
                                 </a>
                             </td>
                             <td class="text-center">
-                                <form action="{{ route('topic.destroy', $topic->id) }}" method="POST" 
+                                <form action="{{ route('topic.destroy', $topic->id) }}" method="POST"
                                     onsubmit="return confirm('Are you sure you want to delete this?')">
                                     @csrf
                                     @method('DELETE')
                                     <input type="hidden" name="id" value="{{$topic->id}}">
-                                    <input type="submit" value="Delete" class="btn btn-danger btn-sm">
-                                </form>
-                            </td>   
+                                    <button type="submit" class="btn btn-link text-decoration-none text-dark p-0">
+                                        <img src="{{ asset('admin/assets/images/trash-can-svgrepo-com.svg') }}" alt="Delete">
+                                    </button>
+                                  </form>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>

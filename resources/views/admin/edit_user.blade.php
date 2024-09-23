@@ -18,21 +18,33 @@
           <label for="" class="form-label col-md-2 fw-bold text-md-end">Name:</label>
           <div class="col-md-5">
             <input type="text" name="first_name" value="{{old('first_name', $user->first_name)}}" placeholder="First Name" class="form-control py-2" />
+            @error('first_name')
+              <div class="alert alert-warning">{{ $message }}</div>
+             @enderror
           </div>
           <div class="col-md-5">
             <input type="text" name="last_name" value="{{old('last_name', $user->last_name)}}" placeholder="Last Name" class="form-control py-2" />
+            @error('last_name')
+              <div class="alert alert-warning">{{ $message }}</div>
+             @enderror
           </div>
         </div>
         <div class="form-group mb-3 row">
           <label for="" class="form-label col-md-2 fw-bold text-md-end">UserName:</label>
           <div class="col-md-10">
             <input type="text" name="user_name" value="{{old('user_name', $user->user_name)}}" placeholder="e.g. Jhon33" class="form-control py-2" />
+            @error('user_name')
+              <div class="alert alert-warning">{{ $message }}</div>
+             @enderror
           </div>
         </div>
         <div class="form-group mb-3 row">
           <label for="" class="form-label col-md-2 fw-bold text-md-end">Email:</label>
           <div class="col-md-10">
             <input type="email" name="email" value="{{old('email', $user->email)}}" placeholder="e.g. Jhon@example.com" class="form-control py-2" />
+            @error('email')
+              <div class="alert alert-warning">{{ $message }}</div>
+             @enderror
         </div>
         <div class="form-group mb-3 row">
           <label for="" class="form-label col-md-2 fw-bold text-md-end">Password:</label>

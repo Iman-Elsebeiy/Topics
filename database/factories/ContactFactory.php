@@ -18,6 +18,12 @@ class ContactFactory extends Factory
     {
         return [
             //
+        'name' => $this->faker->name(),
+        'email' => $this->faker->safeEmail(),
+        'subject' => $this->faker->sentence(),
+        'message' => $this->faker->paragraph(),
+        'read' => $this->faker->boolean(),  // true or false
+            
         ];
     }
 }

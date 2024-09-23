@@ -21,7 +21,7 @@ class TopicFactory extends Factory
 
     {
         $files = scandir($path);
-        $files = array_diff($files,array('',''));
+        $files = array_diff($files,array('.','..'));
 
         return fake()->randomElement($files);
     }
@@ -36,7 +36,7 @@ class TopicFactory extends Factory
             'trending' => fake()->boolean(),
             'published' =>fake()->boolean(),
             'views' =>fake()->randomNumber(),
-            'image'=>$this->generateRandomImage(public_path('admin/assets/images/topics/')),
+            'image'=>$this->generateRandomImage(public_path('assets/images/topics/')),
             'category_id'=>fake()->numberBetween(1,5),
         
         ];

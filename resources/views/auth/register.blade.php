@@ -82,7 +82,9 @@
                 </button>
 
                 <!-- Login Link -->
-                <a href="{{ route('login') }}" class="fw-semibold fs-6 text-decoration-none text-dark">Already have an account?</a>
+                <a href="{{ route('login') }}" class="fw-bold fs-6 text-decoration-none text-dark mt-3">
+                    Already have an account?
+                </a>
             </form>
         </div>
     </div>

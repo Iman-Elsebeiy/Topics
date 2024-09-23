@@ -10,14 +10,14 @@
 
         <!-- Right side with form (50% width) -->
         <div class="col-md-7 d-flex align-items-center">
-            <form method="POST" action="{{ route('login') }}" class="text-center w-100 px-3">
+            <form method="POST" action="{{ route('login') }}" class="text-center w-100 px-3 d-flex flex-column justify-content-center">
                 @csrf
 
                 <h3 class="fw-semibold mb-5">LOGIN FORM</h3>
 
                 <!-- Email -->
                 <div class="input-group mb-3">
-                    <input id="email" type="email" placeholder="Email Address" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autofocus>
+                    <input id="email" type="email" placeholder="Email Address" class="form-control input-underline @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autofocus>
                     <img src="{{ asset('admin/assets/images/user-svgrepo-com.svg') }}" alt="" class="input-group-text">
                     
                     @error('email')
@@ -29,7 +29,7 @@
 
                 <!-- Password -->
                 <div class="input-group mb-3">
-                    <input id="password" type="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror" name="password" required>
+                    <input id="password" type="password" placeholder="Password" class="form-control input-underline @error('password') is-invalid @enderror" name="password" required>
                     <img src="{{ asset('admin/assets/images/password-svgrepo-com.svg') }}" alt="" class="input-group-text">
                     
                     @error('password')
@@ -57,13 +57,13 @@
 
                 <!-- Forgot Password -->
                 @if (Route::has('password.request'))
-                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                    <a class="fw-bold fs-6 text-decoration-none text-dark mb-3" href="{{ route('password.request') }}">
                         {{ __('Forgot Your Password?') }}
                     </a>
                 @endif
 
                 <!-- New User Link -->
-                <a href="{{ route('register') }}" class="fw-semibold fs-6 text-decoration-none text-dark">New User?</a>
+                <a href="{{ route('register') }}" class="fw-bold fs-6 text-decoration-none text-dark">New User?</a>
             </form>
         </div>
     </div>
